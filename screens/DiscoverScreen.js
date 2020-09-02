@@ -22,7 +22,6 @@ const width = Dimensions.get('window').width;
 
 const ScreenArea = styled.View`
   background-color: rgb(246, 246, 246);
-  /* background-color: black; */
   flex: 1;
 `;
 
@@ -51,8 +50,7 @@ const HeaderText = styled.Text`
   font-size: 34px;
   line-height: 41px;
   color: white;
-  font-family: 'Montserrat';
-  font-weight: bold;
+  font-family: 'Montserrat-Bold';
 `;
 const HeaderDetailText = styled.Text`
   color: white;
@@ -89,8 +87,11 @@ const SearchWrapper = styled.View`
 `;
 
 const DiscoverScrollContainer = styled.ScrollView`
-  padding: 0px 0px 0px 20px;
+  padding: 0px 0px 0px 10px;
+  max-height: 80%;
 `;
+
+const ScrollContainer = styled.View``;
 
 const DiscoverScreen = ({
   colleges,
@@ -118,15 +119,21 @@ const DiscoverScreen = ({
           <SearchComponent />
         </SearchWrapper>
         <DiscoverScrollContainer>
-          <ItemList
-            name={'Colleges'}
-            renderItem={(item) => (
-              <CollegeCard {...item} onClick={setCollege} selected={selected} />
-            )}
-            data={colleges}
-          />
-          <ItemList name={'Major'} renderItem={OtherCard} data={majors} />
-          <ItemList name={'Degrees'} renderItem={OtherCard} data={degrees} />
+          <ScrollContainer>
+            <ItemList
+              name={'Colleges'}
+              renderItem={(item) => (
+                <CollegeCard
+                  {...item}
+                  onClick={setCollege}
+                  selected={selected}
+                />
+              )}
+              data={colleges}
+            />
+            <ItemList name={'Major'} renderItem={OtherCard} data={majors} />
+            <ItemList name={'Degrees'} renderItem={OtherCard} data={degrees} />
+          </ScrollContainer>
         </DiscoverScrollContainer>
       </DiscoverWrapper>
       <SelectComponent selectedCollege={selectedCollege} />

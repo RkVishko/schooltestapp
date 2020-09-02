@@ -10,6 +10,7 @@ const ListName = styled.Text`
   line-height: 28px;
   font-weight: bold;
   color: rgb(66, 66, 66);
+  margin-left: 10px;
 `;
 const CollegesSeparator = styled.View`
   width: 16px;
@@ -26,7 +27,11 @@ export const ItemList = ({ name = 'Test', data, renderItem }) => {
         keyExtractor={(item, index) => `${index}-list-${name}`}
         // extraData={selectedId}
         ItemSeparatorComponent={CollegesSeparator}
-        contentContainerStyle={{ paddingBottom: 20 }}
+        contentContainerStyle={{
+          paddingBottom: 20,
+          paddingTop: 20,
+          paddingLeft: 10,
+        }}
       />
     </ListWrapper>
   );

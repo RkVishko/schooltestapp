@@ -4,16 +4,26 @@ import LinearGradient from 'react-native-linear-gradient';
 
 const CardWrapper = styled.View`
   flex-direction: column;
-  /* height: 235px; */
   width: 268px;
   border-radius: 10px;
-  overflow: hidden;
   background-color: white;
-  elevation: 10;
   opacity: ${(props) => (props.selected ? '0.2' : '1')};
+  border-radius: 10px;
+  overflow: hidden;
 `;
 
-const TouchableView = styled.TouchableWithoutFeedback``;
+const CardContainer = styled.View`
+  shadow-opacity: 0.25;
+  shadow-radius: 5px;
+  shadow-color: black;
+  shadow-offset: 0px 0px;
+  elevation: 10;
+`;
+
+const TouchableView = styled.TouchableWithoutFeedback`
+  border-radius: 10px;
+  overflow: hidden;
+`;
 
 const CardHead = styled.View`
   /* height: 50%; */
@@ -102,8 +112,7 @@ const StudentText = styled.Text`
   position: absolute;
   color: ${(props) => `${props.color || 'black'}`};
   font-size: 12px;
-  font-family: 'Roboto';
-  font-weight: bold;
+  font-family: 'Roboto-Bold';
 `;
 
 const StudentsList = ({ students }) => {
@@ -185,30 +194,34 @@ export const CollegeCard = ({
 }) => {
   return (
     <TouchableView onPress={() => onClick(index)}>
-      <LinearGradient
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 0 }}
-        colors={['rgb(242,87,20)', 'rgb(245,175,25)']}
-        style={{ borderRadius: 10 }}>
-        <CardWrapper key={`${index}-college`} selected={selected === index}>
-          <CardHead>
-            <HeadImage source={{ uri: 'https://picsum.photos/300/150' }} />
-            <CollegeIcon>
-              <CollegeText>{name || 'TEST'}</CollegeText>
-            </CollegeIcon>
-          </CardHead>
-          <CardFoot>
-            <TopRow>
-              <CollegeFullName>{name || 'TEST'}</CollegeFullName>
-              <RoomsNumber>{`${rooms || 'XX'} rooms`}</RoomsNumber>
-            </TopRow>
-            <BotRow>
-              <StudentsList students={students} />
-              <StudentsNameList students={students} />
-            </BotRow>
-          </CardFoot>
-        </CardWrapper>
-      </LinearGradient>
+      <CardContainer>
+        <LinearGradient
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 0 }}
+          colors={['rgb(242,87,20)', 'rgb(245,175,25)']}
+          style={{
+            borderRadius: 10,
+          }}>
+          <CardWrapper key={`${index}-college`} selected={selected === index}>
+            <CardHead>
+              <HeadImage source={{ uri: 'https://picsum.photos/300/150' }} />
+              <CollegeIcon>
+                <CollegeText>{name || 'TEST'}</CollegeText>
+              </CollegeIcon>
+            </CardHead>
+            <CardFoot>
+              <TopRow>
+                <CollegeFullName>{name || 'TEST'}</CollegeFullName>
+                <RoomsNumber>{`${rooms || 'XX'} rooms`}</RoomsNumber>
+              </TopRow>
+              <BotRow>
+                <StudentsList students={students} />
+                <StudentsNameList students={students} />
+              </BotRow>
+            </CardFoot>
+          </CardWrapper>
+        </LinearGradient>
+      </CardContainer>
     </TouchableView>
   );
 };

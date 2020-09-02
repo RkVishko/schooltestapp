@@ -13,6 +13,10 @@ const Container = styled.View`
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
   elevation: 15;
+  shadow-opacity: 0.3;
+  shadow-radius: 15px;
+  shadow-color: black;
+  shadow-offset: 0px 0px;
 `;
 
 const InterActiveZone = styled.View`

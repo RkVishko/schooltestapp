@@ -7,6 +7,10 @@ const CardWrapper = styled.View`
   background-color: white;
   border-radius: 10px;
   elevation: 10;
+  shadow-opacity: 0.25;
+  shadow-radius: 5px;
+  shadow-color: black;
+  shadow-offset: 0px 0px;
 `;
 
 const TitleWrapper = styled.View``;
